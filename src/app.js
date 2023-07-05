@@ -2,6 +2,7 @@ const express = require('express');
 const db = require('./utils/database');
 const ToDos = require('./models/todos.models');
 require("dotenv").config();
+const cors = require('cors');
 
 
 const PORT = process.env.PORT ?? 8000;
@@ -20,6 +21,7 @@ db.sync()
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 
 app.get('/', (req, res) => {
